@@ -4,6 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:title" content="Brand Engagement Bookmark Generator"/>
+  <meta property="og:image" content="https://timw255.github.io/brand-engagement-bookmarks/images/startup-593327_1920.jpg"/>
+  <meta property="og:description" content="Engaging with your audience is key... but doing it quickly requires a trick. Create your very own, customized 'Brand Engagement Bookmark'"/>
+  <meta property="og:url" content="https://timw255.github.io/brand-engagement-bookmarks/" />
+
   <title>Brand Engagement Bookmark Generator</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -20,10 +25,9 @@
 </head>
 
 <body class="text-center">
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="masthead mb-auto">
-    </header>
-
+  <div class="pretty d-flex w-100 h-100"></div>
+  <div class="cover-container d-flex p-3 mx-auto flex-column">
+    <header class="masthead mb-auto"></header>
     <main role="main" class="inner cover d-flex mx-auto flex-column justify-content-center">
       <h1 class="cover-heading">Engaging with your audience is key...</h1>
       <p class="lead">Doing it correctly&mdash;as your brand&mdash;is a great way to increase awareness and
@@ -82,35 +86,35 @@
       </div>
     </div>
 
-    <script>
-      (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-          var forms = document.getElementsByClassName('needs-validation');
-          var validation = Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
-              if (form.checkValidity() !== false) {
-                const formData = new FormData(event.target);
-                const bookmarklet = document.getElementById("bookmarklet");
-                bookmarklet.text = "View post as " + formData.get('company-name');
-                bookmarklet.href = "javascript:(function(){window.location=window.location.toString().concat('/?actorCompanyId=" + formData.get('company-identifier') + "');})()";
-                $('#modal').modal();
-              }
-              form.classList.add('was-validated');
-              event.preventDefault();
-              event.stopPropagation();
-            }, false);
-          });
-        }, false);
-      })();
-    </script>
-
     <footer class="mastfoot mt-auto">
       <div class="inner">
         <p>For you, by <a href="https://twitter.com/timw255">@timw255</a>.</p>
       </div>
     </footer>
   </div>
+
+  <script>
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() !== false) {
+              const formData = new FormData(event.target);
+              const bookmarklet = document.getElementById("bookmarklet");
+              bookmarklet.text = "View post as " + formData.get('company-name');
+              bookmarklet.href = "javascript:(function(){window.location=window.location.toString().concat('/?actorCompanyId=" + formData.get('company-identifier') + "');})()";
+              $('#modal').modal();
+            }
+            form.classList.add('was-validated');
+            event.preventDefault();
+            event.stopPropagation();
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
 </body>
 
 </html>
