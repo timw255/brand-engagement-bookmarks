@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Brand Engagement Bookmark Generator</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <link href="./cover.css" rel="stylesheet">
+</head>
+
+<body class="text-center" style="background-image: url('images/startup-593327_1920.jpg');">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+    </header>
+
+    <main role="main" class="inner cover d-flex mx-auto flex-column justify-content-center">
+      <h1 class="cover-heading">Engaging with your audience is key...</h1>
+      <p class="lead">Doing it correctly&mdash;as your brand&mdash;is a great way to increase awareness and
+        drive traffic
+        to your page, but doing it quickly requires a "trick".</p>
+      <p class="lead">Enter your company name and company identifier below to create your very own, customized "Brand
+        Engagement
+        Bookmark".*</p>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+          <form class="needs-validation text-left" novalidate>
+            <div class="form-group">
+              <label for="company-name">Company name</label>
+              <input type="text" class="form-control" name="company-name" placeholder="ACME Company" required>
+              <div class="invalid-feedback">
+                Please enter your company name.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="company-identifier">Company identifier</label>
+              <input type="text" class="form-control" name="company-identifier" placeholder="5551234" required
+                pattern="^\d{6,9}$">
+              <div class="invalid-feedback">
+                Company identifiers are usually 6-9 digits.
+              </div>
+            </div>
+            <button class="generate btn btn-primary" type="submit">Generate my bookmark!</button>
+          </form>
+        </div>
+      </div>
+      <div class="outro">
+        <p class="small"><i>*None of this information gets sent back to me. Even if it did, I would never dream of doing
+            anything evil with it.</i></p>
+      </div>
+    </main>
+
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Here it is. Drag the link below up to your bookmarks bar and then sit back, relax, and think of a couple
+              ways to spend all the time you're going to save by using it.</p>
+            <p><a id="bookmarklet" href="#">Current Post as Company</a></p>
+            <p>Speaking of using it, all you have to do is visit a post you'd like to interact with and then click the
+              bookmark. That's all there is to it!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+          var forms = document.getElementsByClassName('needs-validation');
+          var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+              if (form.checkValidity() !== false) {
+                const formData = new FormData(event.target);
+                const bookmarklet = document.getElementById("bookmarklet");
+                bookmarklet.text = "View post as " + formData.get('company-name');
+                bookmarklet.href = "javascript:(function(){window.location=window.location.toString().concat('/?actorCompanyId=" + formData.get('company-identifier') + "');})()";
+                $('#modal').modal();
+              }
+              form.classList.add('was-validated');
+              event.preventDefault();
+              event.stopPropagation();
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>For you, by <a href="https://twitter.com/timw255">@timw255</a>.</p>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
